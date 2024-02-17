@@ -32,7 +32,6 @@ public class TranslatorModule : CarterModule
         })
         .WithName("Translate text")
         .WithOpenApi()
-        .AllowAnonymous()
         .AddEndpointFilter<ValidationFilter<ToTranslateDTO>>();
 
         app.MapGet("", async (IMediator mediator, string guid) =>
@@ -46,7 +45,6 @@ public class TranslatorModule : CarterModule
             return TypedResults.Ok(responseDTO);
         })
         .WithName("Get translated text")
-        .AllowAnonymous()
         .WithOpenApi();
     }
 }
