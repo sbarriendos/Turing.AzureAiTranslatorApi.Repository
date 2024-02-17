@@ -23,7 +23,7 @@ public static class WebApiExtensions
 
         builder.Services
             .AddApplication(builder.Configuration)
-            .AddInfraestrucutre()
+            .AddInfraestrucutre(builder.Configuration)
             .AddPresentation();
 
         IOptions<JwtSettings> jwtSettings = builder.Services.BuildServiceProvider().GetRequiredService<IOptions<JwtSettings>>();
