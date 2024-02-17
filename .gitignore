@@ -2,3 +2,4 @@
 bin/
 obj/
 *.bak
+scr/WebApi/appsettings.Development.json
