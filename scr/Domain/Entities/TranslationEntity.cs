@@ -2,7 +2,7 @@
 
 namespace Domain.Entities;
 
-public class TranslatorEntity
+public class TranslationEntity
 {
     [Key]
     public required string Guid { get; set; }

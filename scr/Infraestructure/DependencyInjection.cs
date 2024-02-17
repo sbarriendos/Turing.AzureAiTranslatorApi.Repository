@@ -4,7 +4,6 @@ using Azure;
 using Infraestructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Infraestructure.Services;
 using Application.Security;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
@@ -14,9 +13,9 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfraestrucutre(this IServiceCollection services, IConfiguration config)
     {
-        services.AddDbContext<TranslatorDbContext>(options => options.UseInMemoryDatabase("TranslatorDB"));
+        services.AddDbContext<TranslationDbContext>(options => options.UseInMemoryDatabase("TranslatorDB"));
 
-        services.AddScoped<ITranslatorRepository, TranslatorRepository>();
+        services.AddScoped<ITranslationRepository, TranslationRepository>();
 
         services.AddScoped((context) =>
         {
@@ -27,7 +26,7 @@ public static class DependencyInjection
             return new TextTranslationClient(credential, region);
         });
 
-        services.AddScoped<ICloudTranslatorService, AzureAiTranslatorService>();
+        services.AddScoped<ICloudTranslatorRepository, AzureAiTranslatorRepository>();
 
         return services;
     }

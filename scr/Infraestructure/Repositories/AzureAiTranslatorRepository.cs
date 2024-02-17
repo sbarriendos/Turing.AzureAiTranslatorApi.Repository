@@ -10,8 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infraestructure.Services;
-public class AzureAiTranslatorService(ILogger<AzureAiTranslatorService> _log, TextTranslationClient _client) : ICloudTranslatorService
+namespace Infraestructure.Repositories;
+public class AzureAiTranslatorRepository(ILogger<AzureAiTranslatorRepository> _log, TextTranslationClient _client) : ICloudTranslatorRepository
 {
     public async Task<AzureAiTranslationEntity> TranslateAsync(string targetLanguage, string inputText)
     {

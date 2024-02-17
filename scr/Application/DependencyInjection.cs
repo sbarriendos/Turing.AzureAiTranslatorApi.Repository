@@ -1,4 +1,5 @@
 ﻿using Application.Security;
+using Application.Translator;
 using FluentValidation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +28,7 @@ public static class DependencyInjection
             .ValidateOnStart();
 
         services.AddScoped<JwtGenerator>();
+        services.AddScoped<BackgroundTranslator>();
 
         return services;
     }

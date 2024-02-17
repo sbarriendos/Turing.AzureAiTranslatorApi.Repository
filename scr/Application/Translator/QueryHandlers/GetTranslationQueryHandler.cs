@@ -6,11 +6,11 @@ using Domain.Models;
 using MediatR;
 
 namespace Application.Posts.QueryHandlers;
-internal class GetTranslationQueryHandler(ITranslatorRepository repository) : IRequestHandler<GetTranslationQuery, TranslationDTO>
+internal class GetTranslationQueryHandler(ITranslationRepository repository) : IRequestHandler<GetTranslationQuery, TranslationDTO>
 {
     public async Task<TranslationDTO> Handle(GetTranslationQuery request, CancellationToken cancellationToken)
     {
-        TranslatorEntity translatorEntity = await repository.Get(request.Guid) ?? throw new NullReferenceException($"Translation {request.Guid} not found");
+        TranslationEntity translatorEntity = await repository.Get(request.Guid) ?? throw new NullReferenceException($"Translation {request.Guid} not found");
 
         TranslationDTO translationDTO = new()
         {
